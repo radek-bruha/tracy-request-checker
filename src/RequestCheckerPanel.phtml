@@ -1,0 +1,66 @@
+<?php declare(strict_types=1);
+
+use Bruha\Tracy\RequestCheckerPanel;
+use Bruha\Tracy\Request;
+
+?>
+<h1>
+    Request Checker: Logs contains <?=RequestCheckerPanel::number(count($requests))?> requests with <?=RequestCheckerPanel::number(array_sum(array_map(static fn(Request $request): float => $request->getDuration(), $requests)) * 1_000, 1)?> ms duration
+</h1>
+<style>
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] {
+        width: 1250px !important;
+        max-width: 1250px !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] h1 {
+        width: 100% !important;;
+        max-width: 1250px !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] tr th {
+        text-align: center !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] tr th.fixed-width {
+        min-width: 150px !important;
+        width: 150px !important;
+        max-width: 150px !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] tr td {
+        background-color: #FDF5CE !important;
+        vertical-align: middle !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] tr td.center {
+        text-align: center !important;
+    }
+
+    div[id^='tracy-debug-panel-Bruha-Tracy-RequestCheckerPanel'] tr td.fixed-width {
+        min-width: 150px !important;
+        width: 150px !important;
+        max-width: 150px !important;
+    }
+</style>
+<div class='tracy-inner'>
+    <table>
+        <thead>
+            <tr>
+                <th class='fixed-width'>Status</th>
+                <th>URL</th>
+                <th class='fixed-width'>Duration</th>
+            </tr>
+        </thead>
+<?php /** @var Request[] $requests */
+foreach ($requests as $request): ?>
+        <tbody>
+            <tr>
+                <td class='fixed-width center'><?=$request->getStatus()?></td>
+                <td class='center'><strong><?=$request->getUrl()?></strong></td>
+                <td class='fixed-width center'><?=RequestCheckerPanel::number($request->getDuration() * 1_000, 1)?> ms</td>
+            </tr>
+        </tbody>
+<?php endforeach; ?>
+    </table>
+</div>
