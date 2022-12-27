@@ -1,6 +1,6 @@
 # [**Tracy**](https://github.com/nette/tracy) [**Request**](https://github.com/guzzle/guzzle) Checker
 [![Downloads](https://img.shields.io/packagist/dt/radek-bruha/tracy-request-checker.svg?style=flat-square)](https://packagist.org/packages/radek-bruha/tracy-request-checker)
-[![Build Status](https://img.shields.io/github/workflow/status/radek-bruha/tracy-request-checker/Workflow?style=flat-square)](https://github.com/radek-bruha/tracy-request-checker/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/radek-bruha/tracy-request-checker/.github/workflows/workflow.yaml?style=flat-square)](https://github.com/radek-bruha/tracy-request-checker/actions)
 [![Latest Stable Version](https://img.shields.io/github/release/radek-bruha/tracy-request-checker.svg?style=flat-square)](https://github.com/radek-bruha/tracy-request-checker/releases)
 
 **Usage**
